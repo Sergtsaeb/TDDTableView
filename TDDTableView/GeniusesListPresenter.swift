@@ -25,7 +25,7 @@ class GeniusesListPresenter {
         return dataSet.count
     }
     
-    func configure(cell cell: GeniusTableViewCell, forRow row: Int) {
+    func configure(cell: GeniusTableViewCell, forRow row: Int) {
         cell.display(name: dataSet[row].name)
         cell.display(skill: dataSet[row].skill)
     }
