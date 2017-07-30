@@ -5,31 +5,137 @@
 //  Created by Sergelenbaatar Tsogtbaatar on 7/29/17.
 //  Copyright © 2017 Sergstaeb. All rights reserved.
 //
+//
+
 
 import XCTest
+@testable import VCTDD
+
 
 class GeniusesTableViewControllerTests: XCTestCase {
     
+    // MARK: - Parameters & Constants.
+    let storyboardName = "Main"
+    let numberOfGeniusesOne = 7
+    let numberOfGeniusesAnother = 3
+    
+    
+    // MARK: - Test vatiables.
+    var sut: GeniusesTableViewController!
+    var presenter: GeniusesListPresenterMock!
+    
+    
+    // MARK: - Set up and tear down.
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        createSut()
     }
     
+    func createSut() {
+        presenter = GeniusesListPresenterMock(model: GeniusesModel())
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        sut = storyboard.instantiateViewControllerWithIdentifier(GeniusesTableViewController.ID) as! GeniusesTableViewController
+    }
+    
+    
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        releaseSut()
+        
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func releaseSut() {
+        sut = nil
+        presenter = nil
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    // MARK: - Basic test.
+    func testSutIsntNil() {
+        XCTAssertNotNil(sut, "Sut must not be nil.")
+    }
+    
+    
+    func testTableRowHeightIsAutomatic() {
+        _ = sut.view
+        
+        XCTAssertEqual(sut.tableView.rowHeight, UITableViewAutomaticDimension)
+    }
+    
+    
+    func testTableEstimatedRowHeightIsSet() {
+        _ = sut.view
+        
+        XCTAssertTrue(sut.tableView.estimatedRowHeight > 0.0)
+    }
+    
+    
+    // MARK: - Event handling in the presenter
+    func testViewDidLoadInvokesViewCreatedEvent() {
+        sut.presenter = presenter
+        
+        _ = sut.view
+        
+        // Assert
+        XCTAssertTrue(presenter.isViewCreatedInvoked)
+    }
+    
+    
+    func testPresenterProvidesOneNumberOfRowsInSection() {
+        presenter.totalGeniuses = numberOfGeniusesOne
+        sut.presenter = presenter
+        
+        let rows = sut.tableView(sut.tableView, numberOfRowsInSection: 0)
+        
+        XCTAssertEqual(rows, numberOfGeniusesOne)
+    }
+    
+    
+    func testPresenterProvidesAnotherNumberOfRowsInSection() {
+        presenter.totalGeniuses = numberOfGeniusesAnother
+        sut.presenter = presenter
+        
+        let rows = sut.tableView(sut.tableView, numberOfRowsInSection: 0)
+        
+        XCTAssertEqual(rows, numberOfGeniusesAnother)
+    }
+    
+    
+    func testNumberOfRowsInSectionIsZeroIfPresenterIsNotSet() {
+        sut.presenter = nil
+        
+        let rows = sut.tableView(sut.tableView, numberOfRowsInSection: 0)
+        
+        XCTAssertEqual(rows, 0)
+    }
+    
+    
+    func testPresenterConfiguresCellView() {
+        sut.presenter = presenter
+        presenter.totalGeniuses = 1
+        
+        sut.tableView(sut.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+        
+        XCTAssertTrue(presenter.isConfigureCellInvoked)
+    }
+    
+    
+    // MARK: - Stubs & Mocks.
+    class GeniusesListPresenterMock: GeniusesListPresenter {
+        var totalGeniuses: Int?
+        var isViewCreatedInvoked = false
+        var isConfigureCellInvoked = false
+        
+        override func viewCreated() {
+            isViewCreatedInvoked = true
+        }
+        
+        override func numberOfGeniuses() -> Int {
+            return totalGeniuses ?? 0
+        }
+        
+        override func configure(cell: GeniusTableViewCell, forRow row: Int) {
+            isConfigureCellInvoked = true
         }
     }
-    
 }
