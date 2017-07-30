@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C04757F51F2D7FA7005EAC08 /* GeniusesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04757F41F2D7FA7005EAC08 /* GeniusesListPresenter.swift */; };
+		C04757F71F2D7FD0005EAC08 /* GeniusesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04757F61F2D7FD0005EAC08 /* GeniusesModel.swift */; };
+		C04757F91F2D8006005EAC08 /* GeniusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04757F81F2D8006005EAC08 /* GeniusTableViewCell.swift */; };
 		C0C40ABA1F2D67E600A8CC29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C40AB91F2D67E600A8CC29 /* AppDelegate.swift */; };
 		C0C40ABF1F2D67E600A8CC29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0C40ABD1F2D67E600A8CC29 /* Main.storyboard */; };
 		C0C40AC11F2D67E600A8CC29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0C40AC01F2D67E600A8CC29 /* Assets.xcassets */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C04757F41F2D7FA7005EAC08 /* GeniusesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusesListPresenter.swift; sourceTree = "<group>"; };
+		C04757F61F2D7FD0005EAC08 /* GeniusesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusesModel.swift; sourceTree = "<group>"; };
+		C04757F81F2D8006005EAC08 /* GeniusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusTableViewCell.swift; sourceTree = "<group>"; };
 		C0C40AB61F2D67E600A8CC29 /* TDDTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDDTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C40AB91F2D67E600A8CC29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0C40ABE1F2D67E600A8CC29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				C0C40AB91F2D67E600A8CC29 /* AppDelegate.swift */,
+				C04757F41F2D7FA7005EAC08 /* GeniusesListPresenter.swift */,
+				C04757F61F2D7FD0005EAC08 /* GeniusesModel.swift */,
+				C04757F81F2D8006005EAC08 /* GeniusTableViewCell.swift */,
 				C0C40ABD1F2D67E600A8CC29 /* Main.storyboard */,
 				C0C40ACB1F2D68CE00A8CC29 /* GeniusesTableViewController.swift */,
 				C0C40AC01F2D67E600A8CC29 /* Assets.xcassets */,
@@ -136,7 +145,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0C40ACC1F2D68CE00A8CC29 /* GeniusesTableViewController.swift in Sources */,
+				C04757F51F2D7FA7005EAC08 /* GeniusesListPresenter.swift in Sources */,
+				C04757F71F2D7FD0005EAC08 /* GeniusesModel.swift in Sources */,
 				C0C40ABA1F2D67E600A8CC29 /* AppDelegate.swift in Sources */,
+				C04757F91F2D8006005EAC08 /* GeniusTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +324,7 @@
 				C0C40ACA1F2D67E600A8CC29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

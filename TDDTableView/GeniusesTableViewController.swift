@@ -34,7 +34,7 @@ class GeniusesTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! GeniusTableViewCell
         
         presenter?.configure(cell: cell, forRow: indexPath.row)
         // Configure the cell...
